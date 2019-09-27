@@ -8,7 +8,7 @@ SoftwareSerial wifi(2,3);
 
 void setup() {
   Serial.begin(115200);
-  connectwifi("iDon'tKnow","pimpleshwar1@108" );
+  connectwifi("a","11111111" );
 }
 
 void loop() {
@@ -59,7 +59,7 @@ boolean connectwifi(String s, String p){
       Serial.println("No wifi connected.. trying to connect");
       String cmd="AT+CWJAP=\"";cmd+=s;cmd+="\",\"";cmd+=p;cmd+="\"";
       wifi.println(cmd);delay(5000);
-      if (wifi.find("OK")){Serial.println("wifi Connected");}
+      if (wifi.find("CONNECTED")){Serial.println("wifi Connected");}
     }
     else {
       Serial.println("Wifi Already Connected");

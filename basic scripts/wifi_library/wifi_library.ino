@@ -1,18 +1,17 @@
+#include "SoftwareSerial.h"
+SoftwareSerial Serial1(2,3); // RX, TX
+
 #include "WiFiEsp.h"
 
 // Emulate Serial1 on pins 6/7 if not present
 #ifndef HAVE_HWSERIAL1
-#include "SoftwareSerial.h"
-SoftwareSerial Serial1(2,3); // RX, TX
 #endif
 
-char ssid[] = "iDon'tKnow";            // your network SSID (name)
-char pass[] = "pimpleshwar1@108";        // your network password
+char ssid[] = "a";            // your network SSID (name)
+char pass[] = "11111111";        // your network password
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
 
 char server[] = "arduino.cc";
-
-// Initialize the Ethernet client object
 WiFiEspClient client;
 static const char* host = "184.106.153.149";
 static const char* apiKey = "KW23TE4XW3D8M8UN";
