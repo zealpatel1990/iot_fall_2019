@@ -1,5 +1,78 @@
 [
     {
+        "id": "121ddaef.bdcde5",
+        "type": "tab",
+        "label": "icp7_p4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "282a6a6e.84f9a6",
+        "type": "inject",
+        "z": "121ddaef.bdcde5",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "66292c86.5ec9b4"
+            ]
+        ]
+    },
+    {
+        "id": "66292c86.5ec9b4",
+        "type": "function",
+        "z": "121ddaef.bdcde5",
+        "name": "",
+        "func": "//context.level = !context.level || false;\n\nif ((msg.payload/1000).toFixed(0)%3 == 0){\n\nvar msg1 = {payload: 1};\nvar msg2 = {payload: 0};\nvar msg3 = {payload: 0};}\n\nif ((msg.payload/1000).toFixed(0)%3 == 1){\nvar msg1 = {payload: 0};\nvar msg2 = {payload: 1};\nvar msg3 = {payload: 0};}\n\nif ((msg.payload/1000).toFixed(0)%3 == 2){\nvar msg1 = {payload: 0};\nvar msg2 = {payload: 0};\nvar msg3 = {payload: 1};}\n\n\nreturn [msg1,msg2,msg3];",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "c8ed930e.14f86"
+            ],
+            [
+                "ad2c64e5.239878"
+            ],
+            [
+                "e02a4e2f.72d94"
+            ]
+        ]
+    },
+    {
+        "id": "c8ed930e.14f86",
+        "type": "arduino out",
+        "z": "121ddaef.bdcde5",
+        "name": "red",
+        "pin": "13",
+        "state": "OUTPUT",
+        "arduino": "624d07d6.5c79c8",
+        "x": 590,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e02a4e2f.72d94",
+        "type": "arduino out",
+        "z": "121ddaef.bdcde5",
+        "name": "green",
+        "pin": "2",
+        "state": "OUTPUT",
+        "arduino": "624d07d6.5c79c8",
+        "x": 590,
+        "y": 280,
+        "wires": []
+    },
+    {
         "id": "ad2c64e5.239878",
         "type": "arduino out",
         "z": "121ddaef.bdcde5",
