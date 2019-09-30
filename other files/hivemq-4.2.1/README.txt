@@ -11,3 +11,4 @@ Windows
 --------
 right click on bin\run.bat
 select "Run as administrator"
+
