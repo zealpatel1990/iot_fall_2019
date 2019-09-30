@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('C_to_F',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"C_to_F";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="C_to_F">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="C_to_F">
+    <p>A simple node that converts celuis to fahrenit</p>
+</script>

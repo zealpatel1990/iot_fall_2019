@@ -1,0 +1,22 @@
+documentation - all media
+source code - working code with comments
+
+project-{project proposal-{docmen, source code}, final project-{docmen, source code}}
+
+
+feedback form paste wiki link
+
+BAUD RATE 4 = 9600
+BAUD RATE 5 = 19200
+6 – 38400
+7 – 57600
+8 – 115200
+9 - 230400 
+
+AT+CWJAP_CUR="iDon'tKnow","pimpleshwar1@108"
+AT+CWJAP_DEF="a","11111111"
+
+AT+CIPSTART="TCP","184.106.153.149",80
+
+
+

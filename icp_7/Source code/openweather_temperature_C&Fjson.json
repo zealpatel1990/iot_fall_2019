@@ -1,0 +1,124 @@
+[
+    {
+        "id": "3bc3923d.28500e",
+        "type": "tab",
+        "label": "icp7_p2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "399b8366.1907ec",
+        "type": "inject",
+        "z": "3bc3923d.28500e",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "df678f3.4196c7"
+            ]
+        ]
+    },
+    {
+        "id": "55b326b0.80ba78",
+        "type": "debug",
+        "z": "3bc3923d.28500e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 730,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "df678f3.4196c7",
+        "type": "openweathermap",
+        "z": "3bc3923d.28500e",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "kansas city",
+        "country": "United States",
+        "language": "en",
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "eeccf1ac.aac56",
+                "7faf1689.7c8188"
+            ]
+        ]
+    },
+    {
+        "id": "eeccf1ac.aac56",
+        "type": "C_to_F",
+        "z": "3bc3923d.28500e",
+        "name": "",
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "f4df66c.aba4298"
+            ]
+        ]
+    },
+    {
+        "id": "b8a479f6.fd9868",
+        "type": "debug",
+        "z": "3bc3923d.28500e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 730,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7faf1689.7c8188",
+        "type": "function",
+        "z": "3bc3923d.28500e",
+        "name": "C",
+        "func": "msg.payload = msg.payload.tempc.toString();\nmsg.payload = msg.payload + \" °C\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "b8a479f6.fd9868"
+            ]
+        ]
+    },
+    {
+        "id": "f4df66c.aba4298",
+        "type": "function",
+        "z": "3bc3923d.28500e",
+        "name": "F",
+        "func": "//msg.payload = msg.payload.tempc.toString();\nmsg.payload = msg.payload + \" °F\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "55b326b0.80ba78"
+            ]
+        ]
+    }
+]

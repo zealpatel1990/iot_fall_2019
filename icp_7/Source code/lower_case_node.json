@@ -1,0 +1,56 @@
+[
+    {
+        "id": "4f171578.ff1f0c",
+        "type": "tab",
+        "label": "icp7_p1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "58bc3eb5.0b132",
+        "type": "inject",
+        "z": "4f171578.ff1f0c",
+        "name": "",
+        "topic": "",
+        "payload": "YXRDCKB",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "ad997561.313658"
+            ]
+        ]
+    },
+    {
+        "id": "ad997561.313658",
+        "type": "lower-case",
+        "z": "4f171578.ff1f0c",
+        "name": "",
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "3b61573b.0673e8"
+            ]
+        ]
+    },
+    {
+        "id": "3b61573b.0673e8",
+        "type": "debug",
+        "z": "4f171578.ff1f0c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 590,
+        "y": 160,
+        "wires": []
+    }
+]

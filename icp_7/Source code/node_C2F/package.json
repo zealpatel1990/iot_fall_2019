@@ -1,0 +1,16 @@
+{
+  "name": "node-red-contrib-icp7-c2f",
+  "version": "1.0.0",
+  "description": "this node convert from celcuis to faheranit",
+  "main": "C_to_F.js",
+  "node-red" : {
+        "nodes": {
+            "C_to_F": "C_to_F.js"
+        }
+		},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zeal patel",
+  "license": "ISC"
+}

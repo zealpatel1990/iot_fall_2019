@@ -1,0 +1,5 @@
+2019-09-26 23:58:11,296 INFO  - Shutting down HiveMQ. Please wait, this could take a while...
+2019-09-26 23:58:13,733 INFO  - Shutting down extension system
+2019-09-26 23:58:21,436 INFO  - Still shutting down HiveMQ. Waiting for remaining tasks to be executed. Do not shutdown HiveMQ.
+2019-09-26 23:58:31,435 INFO  - Still shutting down HiveMQ. Waiting for remaining tasks to be executed. Do not shutdown HiveMQ.
+2019-09-26 23:58:41,435 INFO  - Still shutting down HiveMQ. Waiting for remaining tasks to be executed. Do not shutdown HiveMQ.

@@ -1,0 +1,63 @@
+[
+    {
+        "id": "e8216c6a.c7ff6",
+        "type": "tab",
+        "label": "icp7_p3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d60631e5.bb067",
+        "type": "inject",
+        "z": "e8216c6a.c7ff6",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "0.5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "7b4bfcc3.c8c7d4"
+            ]
+        ]
+    },
+    {
+        "id": "7b4bfcc3.c8c7d4",
+        "type": "function",
+        "z": "e8216c6a.c7ff6",
+        "name": "toggle 0 and 1",
+        "func": "context.level = !context.level || false;\nmsg.payload = context.level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "a92e8c09.1d009"
+            ]
+        ]
+    },
+    {
+        "id": "a92e8c09.1d009",
+        "type": "arduino out",
+        "z": "e8216c6a.c7ff6",
+        "name": "",
+        "pin": "13",
+        "state": "OUTPUT",
+        "arduino": "624d07d6.5c79c8",
+        "x": 640,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "624d07d6.5c79c8",
+        "type": "arduino-board",
+        "z": "",
+        "device": "COM13"
+    }
+]
