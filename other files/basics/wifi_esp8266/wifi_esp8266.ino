@@ -1,8 +1,8 @@
 #include <SoftwareSerial.h>
-SoftwareSerial wifi(2,3); 
-/*#define SSID "a"
+SoftwareSerial wifi(9,10); 
+#define SSID "a"
 #define PASS "11111111"
-*/
+
 //#define SSID "iDon'tKnow"
 //#define PASS "pimpleshwar1@108"
 
