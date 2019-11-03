@@ -4,7 +4,7 @@ from time import sleep
 consumer_key ="QkWOL7X4Ni1v41sE62recwUsm"
 consumer_secret ="6kdmEInXFtHebTudOy9MxaOEFfTTctmsQ8nD3PvkctRy9OaNKb"
 access_token ="1010252295441825792-en4dt7Qgy3JCl38L4JglKp6yRDGMHp"
-access_token_secret ="Yj7GfaS3CCLDWuXutfbjt62TWvBNElOT48R0CaFuOUl84"
+access_token_secret ="8ASK_FOR _IT"
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)   
 auth.set_access_token(access_token, access_token_secret) 
 api = tweepy.API(auth) 
