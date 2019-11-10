@@ -4,12 +4,13 @@
 SoftwareSerial wifi(9,10); 
 //#define ID "a" //"SSID-WiFiname" 
 //#define PASS "11111111" // "password"
-#define ID "ERROR 404" //"SSID-WiFiname" 
-#define PASS "password1234#" // "password"
-
+//#define ID "ERROR 404" //"SSID-WiFiname" 
+//#define PASS "password1234#" // "password"
+#define ID "ApnaTimeAyega"     // "SSID-WiFiname" 
+#define PASS "GullyGirls@112"       // "password"
 
 String readtext = "";
-String tweet = String("+IPD,5:Tweet");
+String tweet = String("Tweet");
 int switchState = 0;
 
 void setup() {
@@ -28,32 +29,39 @@ void loop() {
   switchState = digitalRead(5);
   if(switchState == HIGH){
   // the button is not pressed
-    send_data_tcp("Img:from arduino via Raspberry pi\n");
+    delay(100);
+    send_data_tcp("Tweet:from arduino via Raspberry pi\n");
     delay(50);
   }
   
   else{
-    if (wifi.available()) {
-    String readtext = (wifi.readString());
-    
-    //readtext.remove(1,8);
-   
-    //readtext.trim();
-    
-    Serial.println(readtext);
-      if(readtext == tweet){
-        Serial.println("Yaay received Tweet from rapberry Pi\n");
-        digitalWrite(3, HIGH);
-        delay(5000);
-        digitalWrite(3, LOW);
-      }
-      else {
-  //      Serial.println("arduino: not posted");
-        digitalWrite(3, LOW);
-      }
+    if (wifi.available()) 
+      {  
+        String readtext = (wifi.readString());
+        readtext.remove(1,8);
+        readtext.trim();
+        Serial.println(readtext);
+        if(wifi.find("+IPD,10:Tweet_Sent"))
+          {
+           digitalWrite(3, HIGH);
+           delay(5000);
+           digitalWrite(3, LOW); 
+          }
+        
+//        
+//          if(readtext == tweet){
+//            Serial.println("Yaay received Tweet from rapberry Pi\n");
+//            digitalWrite(3, HIGH);
+//            delay(5000);
+//            digitalWrite(3, LOW);
+         else 
+          {
+    //      Serial.println("arduino: not posted");
+            digitalWrite(3, LOW);
+          }
+       }
+      else {digitalWrite(3, LOW);}
     }
-    }
- 
 }
 
 ///////////////////////////////////////////// USE: connectwifi(ssid,password)
