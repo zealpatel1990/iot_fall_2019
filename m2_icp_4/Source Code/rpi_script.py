@@ -14,8 +14,8 @@ def on_message(client, userdata, msg):
     #print(msg.topic+" "+str(msg.qos)+": "+str(msg.payload))    
 
 #set GPIO Pins
-GPIO_TRIGGER = 18
-GPIO_ECHO = 24
+GPIO_TRIGGER = 38
+GPIO_ECHO = 40
 rb=8;rf=10;lb=12;lf=16 #THIS ARE PIN FOR WHEEL DIRECTION i.e. right back,left forward
 GPIO.setmode(GPIO.BOARD);GPIO.setup(rb, GPIO.OUT);GPIO.setup(rf, GPIO.OUT);GPIO.setup(lb, GPIO.OUT);GPIO.setup(lf, GPIO.OUT)
 #set GPIO direction (IN / OUT)
