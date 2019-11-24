@@ -1,7 +1,8 @@
 import paho.mqtt.client as paho
 import time
 import RPi.GPIO as GPIO
-output = ""
+import picamera
+output = "stop";temp = ""
 def on_publish(client, userdata, mid):
     return mid
 
@@ -43,43 +44,49 @@ client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
 client.subscribe("iot_class_icp4", qos=1)
 client.loop_start()
-
+camera = picamera.PiCamera()
+camera.resolution = (800, 600)
 # https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/
 while True:
-    distance = distance() #distance is in Centimeter
-    if output != "" and distance < 10:
-        print output
-        (rc, mid) = client.publish("iot_class_icp4", "no obstacle", qos=1)
-        if output == "forward":
-            GPIO.output(rb, 0)
-            GPIO.output(rf, 1)
-            GPIO.output(lb, 0)
-            GPIO.output(lf, 1)
-        elif output == "backward":
+    try:
+        distance = distance() #distance is in Centimeter
+        if output != "" and distance < 10:
+            
+            if temp != output: print output;temp = output
+            (rc, mid) = client.publish("iot_class_icp4", "no obstacle", qos=1)
+            if output == "forward":
+                GPIO.output(rb, 0)
+                GPIO.output(rf, 1)
+                GPIO.output(lb, 0)
+                GPIO.output(lf, 1)
+            elif output == "backward":
+                GPIO.output(rb, 1)
+                GPIO.output(rf, 0)
+                GPIO.output(lb, 1)
+                GPIO.output(lf, 0)
+            elif output == "left":
+                GPIO.output(rb, 0)
+                GPIO.output(rf, 1)
+                GPIO.output(lb, 1)
+                GPIO.output(lf, 0)
+            elif output == "right":
+                GPIO.output(rb, 1)
+                GPIO.output(rf, 0)
+                GPIO.output(lb, 0)
+                GPIO.output(lf, 1)
+            elif output == "stop":
+                GPIO.output(rb, 0)
+                GPIO.output(rf, 0)
+                GPIO.output(lb, 0)
+                GPIO.output(lf, 0)
+        else:
+            print ("Obstacle within 10 cm")
             GPIO.output(rb, 1)
             GPIO.output(rf, 0)
-            GPIO.output(lb, 1)
-            GPIO.output(lf, 0)
-        elif output == "left":
-            GPIO.output(rb, 0)
-            GPIO.output(rf, 1)
-            GPIO.output(lb, 1)
-            GPIO.output(lf, 0)
-        elif output == "right":
-            GPIO.output(rb, 1)
-            GPIO.output(rf, 0)
             GPIO.output(lb, 0)
             GPIO.output(lf, 1)
-        elif output == "end":
-            GPIO.output(rb, 0)
-            GPIO.output(rf, 0)
-            GPIO.output(lb, 0)
-            GPIO.output(lf, 0)
-    else:
-        print ("Obstacle within 10 cm")
-        GPIO.output(rb, 1)
-        GPIO.output(rf, 0)
-        GPIO.output(lb, 0)
-        GPIO.output(lf, 1)
-        (rc, mid) = client.publish("iot_class_icp4", "obstacle", qos=1)
+            (rc, mid) = client.publish("iot_class_icp4/recv", "obstacle", qos=1)
     
+    except KeyboardInterrupt:
+        camera.close()
+        break

@@ -1,6 +1,6 @@
 var hostname = "broker.mqttdashboard.com";
 var port = 8000;
-var clientid = "zealmqttid"+Math.floor(Math.random() * 100) + 1;;
+var clientid = "zealmqtttproject2"+Math.floor(Math.random() * 100) + 1;;
 var client = new Messaging.Client(hostname, port, clientid);
 
 var options = {
@@ -46,28 +46,38 @@ client.onConnectionLost = function (responseObject) {
  }
 
 //this is on button click script
-function moveup(){
-publish('forward','iot_class_icp4',2);
+function moveforward(){
+publish('forward','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'forward';
 }
-function movedown(){
-publish('backward','iot_class_icp4',2);
+function movebackward(){
+publish('backward','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'backward';
 }
 function moveleft(){
-publish('left','iot_class_icp4',2);
+publish('left','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'left';
 }
 function moveright(){
-publish('right','iot_class_icp4',2);
+publish('right','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'right';
 }
+function moveup(){
+publish('up','iot_roboticarm_app',2);
+var temp = document.getElementById("sent_msg");
+temp.innerHTML = 'up';
+}
+function movedown(){
+publish('down','iot_roboticarm_app',2);
+var temp = document.getElementById("sent_msg");
+temp.innerHTML = 'down';
+}
 function end(){
-publish('stop','iot_class_icp4',2);
+publish('stop','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'stop';
 }
