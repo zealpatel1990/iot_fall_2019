@@ -49,10 +49,9 @@ camera.resolution = (800, 600)
 # https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/
 while True:
     try:
-        distance = distance() #distance is in Centimeter
-        if output != "" and distance < 10:
-            
-            if temp != output: print output;temp = output
+        #distance = distance() #distance is in Centimeter
+        if distance > 10:
+            if temp != output: print output;temp = output; camera.capture('imgs/snapshot'+str(img_count)+'.jpg');img_count += 1
             (rc, mid) = client.publish("iot_class_icp4", "no obstacle", qos=1)
             if output == "forward":
                 GPIO.output(rb, 0)
@@ -85,6 +84,7 @@ while True:
             GPIO.output(rf, 0)
             GPIO.output(lb, 0)
             GPIO.output(lf, 1)
+            time.sleep(0.5)
             (rc, mid) = client.publish("iot_class_icp4/recv", "obstacle", qos=1)
     
     except KeyboardInterrupt:
