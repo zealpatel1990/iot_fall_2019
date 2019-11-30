@@ -1,20 +1,26 @@
 #include <SoftwareSerial.h>
-SoftwareSerial s(5,6); //rx tx
- int data2;
+SoftwareSerial s(3, 2); //rx tx
+char temp_char;
 void setup() {
-s.begin(115200);
-Serial.begin(115200);
+  s.begin(115200);
+  Serial.begin(115200);
 }
- 
+
 void loop() {
-
-if(s.available()>0)
-{
- data2 = s.read();
- Serial.println(data2);
- if (data2==99){
-  s.write(77);
- }
-}
-
+  String data_from_node = "";
+  while (s.available() > 0)
+  {
+    temp_char = s.read();
+    data_from_node = data_from_node + temp_char;
+  }
+  if (data_from_node!=""){
+    if (data_from_node.indexOf("app/rot:160")>0) {
+      s.write(1);
+      Serial.println(data_from_node);
+    }
+    else{
+      s.write(2);
+      Serial.println("Error in data");
+    }
+  }
 }

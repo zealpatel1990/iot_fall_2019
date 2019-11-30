@@ -29,11 +29,18 @@ client.onConnectionLost = function (responseObject) {
  //Gets called whenever you receive a message for your subscriptions
  client.onMessageArrived = function (message) {
      //Do something with the push message you received
-	console.log(message.payloadString);
-	document.getElementById("recv_msg").innerHTML = message.payloadString;
-	if (message.payloadString == "obstacle"){
-	document.getElementById("recv_msg").style = "color:red"}
-	else{document.getElementById("recv_msg").style = "color:green"}
+	 var in_msg = parseInt(message.payloadString);
+	console.log(in_msg);
+	document.getElementById("recv_msg").innerHTML = in_msg;
+	if (in_msg == 3){
+		extender_slider.disabled = false;
+	} else if (in_msg == 4) {
+		rotate_slider.disabled = false;
+	} else if (in_msg == 5) {
+		grabber_slider.disabled = false;
+	} else if (in_msg == 6) {
+		height_slider.disabled = false;
+	}
  };
 
  //Creates a new Messaging.Message Object and sends it to the HiveMQ MQTT Broker
@@ -46,26 +53,28 @@ client.onConnectionLost = function (responseObject) {
  }
 
 //this is on button click script
-function moveforward(){
+function extender(){
+this.disabled = true;
 publish('forward','iot_roboticarm_app',2);
-var temp = document.getElementById("sent_msg");
-temp.innerHTML = 'forward';
+publish(this.value,'iot_roboticarm_app/ext',2);
 }
-function movebackward(){
+function rotate(){
 publish('backward','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'backward';
 }
-function moveleft(){
+function grabber(){
 publish('left','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'left';
 }
-function moveright(){
+function height(){
 publish('right','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
 temp.innerHTML = 'right';
 }
+
+
 function moveup(){
 publish('up','iot_roboticarm_app',2);
 var temp = document.getElementById("sent_msg");
