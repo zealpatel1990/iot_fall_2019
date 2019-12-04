@@ -1,10 +1,10 @@
 #include <Servo.h>
 #include <SoftwareSerial.h>
 SoftwareSerial s(3, 2); //rx tx
-Servo servo_extender;
 Servo servo_rotate;
 Servo servo_grabber;
 Servo servo_height;
+Servo servo_extender;
 
 char temp_char;
 
