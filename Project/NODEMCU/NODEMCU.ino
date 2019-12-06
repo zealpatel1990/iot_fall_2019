@@ -3,7 +3,7 @@
 #include <SoftwareSerial.h>
 SoftwareSerial s(D2,D3); //Rx Tx
 const char* ssid = "a";
-const char* password = "11111111";
+const char* password = "1111111";
 const char* mqtt_server = "broker.mqttdashboard.com";
 
 WiFiClient espClient;
@@ -49,7 +49,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     incoming_msg+=((char)payload[i]);
   }
   Serial.println(incoming_msg);
-  send_2_arduino(incoming_msg);
+  //send_2_arduino(incoming_msg);
 }
 
 
@@ -64,12 +64,12 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
       // Once connected, publish an announcement...
-      client.publish("iot_roboticarm_app/recv", "pub ready");
+      client.publish("iot_class_project/app", "pub ready");
       // ... and resubscribe
-      client.subscribe("iot_roboticarm_app/ext");
-      client.subscribe("iot_roboticarm_app/rot");
-      client.subscribe("iot_roboticarm_app/grb");
-      client.subscribe("iot_roboticarm_app/hgt");
+      client.subscribe("iot_class_project/bin1");
+      client.subscribe("iot_class_project/bin2");
+      client.subscribe("iot_class_project/bin3");
+      client.subscribe("iot_class_project/hgt");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
