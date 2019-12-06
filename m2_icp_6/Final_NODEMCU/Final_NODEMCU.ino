@@ -2,8 +2,8 @@
 #include <PubSubClient.h>
 #include <SoftwareSerial.h>
 SoftwareSerial s(D2,D3); //Rx Tx
-const char* ssid = "iDon'tKnow";
-const char* password = "pimpleshwar1@108";
+const char* ssid = "11111111";
+const char* password = "a";
 const char* mqtt_server = "broker.mqttdashboard.com";
 
 WiFiClient espClient;
