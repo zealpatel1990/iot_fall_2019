@@ -13,6 +13,3 @@ try:
 except Exception as e:
     print("Exception: "+str(e))
 
-
-#hello everyone, this file is test file to count
-    #keywords like hello disgusting and awesome, isnt it awesome
