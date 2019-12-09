@@ -2,8 +2,8 @@
 #include <PubSubClient.h>
 #include <SoftwareSerial.h>
 SoftwareSerial s(D2,D3); //Rx Tx
-const char* ssid = "11111111";
-const char* password = "a";
+const char* ssid = "a";
+const char* password = "11111111";
 const char* mqtt_server = "broker.mqttdashboard.com";
 
 WiFiClient espClient;
@@ -30,7 +30,7 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 void send_2_arduino(String str){
-  try_again: s.println(str); delay(100);
+  try_again: s.println(str); delay(300);
   while(1){
     if (s.available() >0){
     int check_flag = s.read();

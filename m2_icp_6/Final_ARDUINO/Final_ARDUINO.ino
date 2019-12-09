@@ -25,6 +25,7 @@ void loop() {
     data_from_node = data_from_node + temp_char;
   }
   if (data_from_node!=""){
+    Serial.println(data_from_node);
     String substr = data_from_node.substring(19,22);
     if (substr == "ext"){
       servo_ext(data_from_node);
