@@ -1,4 +1,5 @@
 import speech_recognition as sr
+import time
 r = sr.Recognizer()
 keywords = ['disgusting','awesome','hello']
 file_in=sr.AudioFile('test.wav')
@@ -13,3 +14,4 @@ try:
 except Exception as e:
     print("Exception: "+str(e))
 
+time.sleep(10)
